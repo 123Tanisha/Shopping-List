@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"> </script>
+
+
+    <title>Shopping</title>
+
+</head>
+<body ng-app="MyApp">
+
+    <div ng-controller="myCtrl">
+
+    <h1>Shopping Application</h1>
+
+    <h3>List of Shopping Items</h3>
+
+    <table border="1">
+
+        <tr>
+
+            <th>SL no.</th>
+
+            <th>Item</th>
+
+        </tr>
+
+        <tr ng-repeat="item in shoppingitems">
+
+            <td>{{$index+1}}</td>
+
+            <td>{{item}}</td>
+
+        </tr>
+
+    </table>
+
+    <div>
+    <body ng-app="MyApp">
+
+    <div ng-controller="myCtrl">
+
+    <h1>Shopping Application</h1>
+
+    <h3>List of Shopping Items</h3>
+
+    <table border="1">
+
+        <tr>
+
+            <th>SL no.</th>
+
+            <th>Item</th>
+
+        </tr>
+
+        <tr ng-repeat="item in shoppingitems">
+
+            <td>{{$index+1}}</td>
+
+            <td>{{item}}</td>
+
+        </tr>
+
+    </table>
+
+    <div>
+    <label> Enter Item to Add:
+
+        <input type="text" ng-model="nitem"  >
+
+        <button ng-click="Add()">Add item</button>
+
+      </label>
+
+     </div><br>
+
+     <div>
+
+      <label>
+
+         Select an Item to Remove :
+
+        <select ng-model="selectitem" ng-options="item for item in shoppingitems"></select>
+
+        <button ng-click="remove()">Remove Item</button>
+
+      </label>
+
+    </div>
+
+    </div>
+<script>
+
+        var app=angular.module('MyApp', []);
+
+            app.controller('myCtrl', function ($scope) {
+
+                $scope.shoppingitems = ["Rice","Dal","Mango"]
+
+
+                $scope.Add=function()
+
+                {
+
+                    if($scope.nitem && $scope.shoppingitems.indexOf($scope.nitem)==-1)
+
+                    {
+
+                        $scope.shoppingitems.push($scope.nitem)
+
+                        $scope.nitem=""
+
+                    }
+
+                    else
+
+                    {
+
+                        if($scope.nitem)
+
+                            alert("this item is already there in the shopping list")
+
+                        else
+
+                            alert("please enter an item to add")
+
+
+                    }
+
+                }
+
+
+
+                $scope.remove=function(){
+
+
+                if($scope.shoppingitems.indexOf($scope.selectitem)==-1)
+
+                {
+
+                    alert("please select an item to remove")
+
+                }
+
+                else
+
+                {
+
+                    var
+ index=$scope.shoppingitems.indexOf($scope.selectitem)
+
+                    $scope.shoppingitems.splice(index,1)
+
+                    $scope.selectitem=""
+
+                }
+
+                }
+
+            });
+
+      </script>
+
+
+</body>
+
+</html>
